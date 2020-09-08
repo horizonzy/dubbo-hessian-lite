@@ -91,6 +91,8 @@ public class Hessian2Output
 
     private boolean _isStreaming;
 
+    private int flushCount;
+
     /**
      * Creates a new Hessian output stream, initialized with an
      * underlying output stream.
@@ -1413,7 +1415,7 @@ public class Hessian2Output
     public final void flush()
             throws IOException {
         flushBuffer();
-
+        flushCount++;
         if (_os != null)
             _os.flush();
     }
@@ -1533,5 +1535,17 @@ public class Hessian2Output
 
             Hessian2Output.this.flush();
         }
+    }
+
+    public byte[] get_buffer() {
+        return _buffer;
+    }
+
+    public int get_offset() {
+        return _offset;
+    }
+
+    public int getFlushCount() {
+        return flushCount;
     }
 }
