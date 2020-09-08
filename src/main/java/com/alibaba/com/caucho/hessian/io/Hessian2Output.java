@@ -1545,7 +1545,13 @@ public class Hessian2Output
         return _offset;
     }
 
+    public void set_offset(int _offset) {
+        this._offset = _offset;
+    }
+
     public int getFlushCount() {
         return flushCount;
     }
+
+
 }
